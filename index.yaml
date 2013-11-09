@@ -1,0 +1,6 @@
+indexes:
+- kind: Bericht
+  ancestor: yes
+  properties:
+  - name: datum
+    direction: desc

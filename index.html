@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+    <h1>Mijn Prikbord</h1>
+
+    {% for bericht in berichten %}
+      {% if bericht.gebruiker %}
+        <b>{{ bericht.gebruiker.nickname() }}</b> schreef:
+      {% else %}
+       Anoniem schreef:
+      {% endif %}
+      <blockquote>{{ bericht.content }}</blockquote>
+    {% endfor %}
+    <form action="/prik?prikbord_naam={{ prikbord_naam }}" method="post">
+      <div><textarea name="content" rows="3" cols="60" placeholder="Je bericht..."></textarea></div>
+      <div><input type="submit" value="Prik!"></div>
+    </form>
+    <hr>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+   </div>
+  </body>
+</html>
+{% endautoescape %}
+
